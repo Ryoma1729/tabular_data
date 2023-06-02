@@ -1,0 +1,35 @@
+site_name: tabler_data
+repo_url: https://github.com/Ryoma1729/tabular_data
+use_directory_urls: false
+docs_dir: docs
+dev_addr: "127.0.0.1:7000"
+
+theme:
+  name: material
+  language: ja
+
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - nl2br
+
+extra:
+  search:
+    language: "jp"
+
+plugins:
+  - search:
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+      htmlmin_opts:
+        remove_comments: true
+  - print-site:
+      print_page_title: ""
+      enumerate_headings: false
+      enumerate_figures: false
+

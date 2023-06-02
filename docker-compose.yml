@@ -1,0 +1,36 @@
+version: "3.5"
+services:
+  cpu:
+    container_name: tabuler_analysis.cpu
+    build:
+      context: .
+      dockerfile: Dockerfile
+    shm_size: "28gb"
+    volumes:
+      - type: bind
+        source: $PWD
+        target: /workspace
+    working_dir: /workspace
+    ports:
+      - "8888:8888"
+    tty: true
+  gpu:
+    container_name: tabuler_analysis.gpu
+    build:
+      context: .
+      dockerfile: Dockerfile
+    shm_size: "28gb"
+    volumes:
+      - type: bind
+        source: $PWD
+        target: /workspace
+    working_dir: /workspace
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
+    ports:
+      - "8080:8080"
+    tty: true
